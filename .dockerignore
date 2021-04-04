@@ -1,0 +1,9 @@
+/.dockerignore
+/.git
+/.gitignore
+/.gitattributes
+/Dockerfile
+/web
+/.vscode
+/test
+/prisma/db

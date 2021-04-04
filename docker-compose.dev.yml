@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  web:
+    build:
+      context: .
+    restart: unless-stopped
+    env_file: ./.env
+    ports:
+    - 2320:2320
+
+  postgres:
+    image: postgres:13-alpine
+    command: ["postgres", "-c", "log_statement=all"]
+    restart: unless-stopped
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: doctordoctor
+      POSTGRES_DB: template
+    ports:
+      - 5432:5432
+
+volumes:
+  postgres_data:
